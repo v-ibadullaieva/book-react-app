@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -20,6 +20,20 @@
 
 .App-intro {
   font-size: large;
+}
+
+.rating {
+  font-size: 20px;
+  cursor: pointer;
+}
+.rating:before {
+  content: '☆';
+}
+.rating:hover:before {
+  content: '★';
+}
+.rating.choosed:before {
+  content: '★';
 }
 
 @keyframes App-logo-spin {

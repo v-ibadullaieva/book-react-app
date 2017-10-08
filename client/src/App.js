@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Link } from 'react-router';
+import { Container } from 'reactstrap';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = ({ children }) =>
+  <div className="App">
+    <Container>
+    	<header>
+    		<Link to='/books'><h3>Books</h3></Link>
+    		<Link to='/'><h3>Collections</h3></Link>
+    	</header>
+      {children}
+    </Container>
+  </div>
 
 export default App;
