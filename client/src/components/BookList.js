@@ -14,6 +14,7 @@ class BookList extends Component {
 	render() {
 		const { books, collections, addBookToCollection, updateBook } = this.props;
 		const { openedId } = this.state
+
 		return (
 			<CardColumns>
 				{books.map(book =>

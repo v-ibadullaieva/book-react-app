@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CollectionBook from './CollectionBook';
 import { CardColumns } from 'reactstrap';
 
-class CollectionBookList extends Component {
-	render() {
-		const { books, collection, deleteBookFromCollection, updateBook } = this.props;
-
-		return (
-			<CardColumns>
-				{books.map(book =>
-					<CollectionBook
-						key={book._id}
-						collection={collection}
-						book={book}
-						onUpdate={updateBook}
-						onDelete={deleteBookFromCollection}
-
-					/>
-				)}
-			</CardColumns>
-		)
-	}
-}
+const CollectionBookList = ({ books, collection, deleteBookFromCollection, updateBook }) =>
+	<CardColumns>
+		{books.map(book =>
+			<CollectionBook
+				key={book._id}
+				collection={collection}
+				book={book}
+				onUpdate={updateBook}
+				onDelete={deleteBookFromCollection}
+			/>
+		)}
+	</CardColumns>
 
 CollectionBookList.propTypes = {
 	books: PropTypes.arrayOf(

@@ -5,6 +5,7 @@ import { Card, CardText, CardBody, CardTitle, CardSubtitle, Dropdown, DropdownTo
 
 const Book = ({ collections, book, onToggle, isOpen, addBookToCollection, onUpdate }) => {
   const availableCollections = collections.filter((c) => !c.books.includes(book._id));
+
   return (
     <Card>
       <CardBody>
@@ -12,23 +13,21 @@ const Book = ({ collections, book, onToggle, isOpen, addBookToCollection, onUpda
         <CardSubtitle>{book.author}</CardSubtitle>
         <CardText>{book.price}</CardText>
         <StarRating rating={book.rating} onChange={(rating) => onUpdate({ _id: book._id, rating })} />
-        {collections.length > 0 &&
-          <Dropdown isOpen={isOpen} toggle={() => onToggle(book._id)}>
-            <DropdownToggle caret disabled={availableCollections.length === 0}>
-              Add to collection
-            </DropdownToggle>
-            <DropdownMenu>
-              {availableCollections.map((collection) =>
-                <DropdownItem
-                  onClick={() => addBookToCollection({ bookId: book._id, collectionId: collection._id })}
-                  key={collection._id}
-                >
-                  {collection.name}
-                </DropdownItem>
-              )}
-            </DropdownMenu>
-          </Dropdown>
-        }
+        <Dropdown isOpen={isOpen} toggle={() => onToggle(book._id)}>
+          <DropdownToggle caret disabled={availableCollections.length === 0}>
+            Add to collection
+          </DropdownToggle>
+          <DropdownMenu>
+            {availableCollections.map((collection) =>
+              <DropdownItem
+                onClick={() => addBookToCollection({ bookId: book._id, collectionId: collection._id })}
+                key={collection._id}
+              >
+                {collection.name}
+              </DropdownItem>
+            )}
+          </DropdownMenu>
+        </Dropdown>
       </CardBody>
     </Card>
   )

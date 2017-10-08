@@ -3,10 +3,10 @@ import { reducer as formReducer } from 'redux-form';
 import { createEpicMiddleware } from 'redux-observable';
 import { createLogger } from 'redux-logger'
 import rootEpic from './epics/rootEpic';
-import reducer from './reducers/appReducer';
+import appReducer from './reducers/appReducer';
 
 const rootReducer = combineReducers({
-  app: reducer,
+  app: appReducer,
   form: formReducer
 })
 

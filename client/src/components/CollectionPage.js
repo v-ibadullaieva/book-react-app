@@ -11,7 +11,7 @@ class CollectionPage extends Component {
   }
 
   render() {
-  	const { collection, books } = this.props;
+  	const { collection, books, deleteBookFromCollection, updateBook } = this.props;
 
     if (collection) {
       const collectionBooks = collection.books.map((book) => books[book]).filter((b) => b);
@@ -22,8 +22,8 @@ class CollectionPage extends Component {
           <CollectionBookList
             books={collectionBooks}
             collection={collection}
-            deleteBookFromCollection={this.props.deleteBookFromCollection}
-            updateBook={this.props.updateBook}
+            deleteBookFromCollection={deleteBookFromCollection}
+            updateBook={updateBook}
           />
         </div>
       )
@@ -41,7 +41,9 @@ CollectionPage.propTypes = {
       PropTypes.string.isRequired
     ).isRequired,
   }),
-  fetchCollection: PropTypes.func.isRequired
+  fetchCollection: PropTypes.func.isRequired,
+  deleteBookFromCollection: PropTypes.func.isRequired,
+  updateBook: PropTypes.func.isRequired,
 }
 
 export default connect(
